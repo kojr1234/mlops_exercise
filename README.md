@@ -1,0 +1,1 @@
+This repository presents my learnings on model deployment and software development best practices in the context of machine learning. The objective here is to get used with testing, model packaging and tooling, etc.
