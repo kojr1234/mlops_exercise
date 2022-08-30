@@ -61,9 +61,12 @@ cat_arbitrary_impute_vars:
   - CryoSleep
   - VIP
 
+###################### Pipeline ##########################
+pipeline_name: spaceship_titanic_model
+pipeline_save_file: spaceship_titanic_pipeline_model_output_v
+
 ################ Training Parameters #####################
 test_size: 0.2
-
 random_state: 0
 
 ######################### Misc ##########################
