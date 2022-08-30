@@ -20,6 +20,7 @@ class AppConfig(BaseModel):
     """
 
     package_name: str
+    train_data: str
     pipeline_save_file: str
 
 class ModelConfig(BaseModel):
