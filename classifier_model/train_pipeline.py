@@ -9,7 +9,7 @@ def run_training() -> None:
     Train the model
     """
 
-    data = load_dataset(filename = config.app_config.train_data)
+    data = load_dataset(file_name=config.app_config.train_data)
 
     X_, X, y_, y = train_test_split(
         data[config.model_config.features],

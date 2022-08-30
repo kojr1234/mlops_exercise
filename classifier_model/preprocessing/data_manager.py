@@ -21,7 +21,7 @@ def remove_old_pipelines(*, files_to_keep: List[str]) -> None:
     mapping between the package version and the model
     version to be imported.
     """
-    do_not_delete = files_to_keep + ['__init__.py']
+    do_not_delete = files_to_keep + ['__init__.py', '.gitkeep']
     for model_file in TRAINED_MODEL_DIR.iterdir():
         if model_file not in do_not_delete:
             model_file.unlink()
