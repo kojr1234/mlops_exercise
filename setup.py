@@ -7,7 +7,7 @@ DESCRIPTION = 'This is an toy project to learn the basics of MLOps and software 
 URL = 'https://github.com/kojr1234/mlops_exercise.git'
 EMAIL = 'fujii.kimio.k@gmail.com'
 AUTHOR= 'FabioFujii'
-REQUIRES_PYTHON = '=3.9.12'
+REQUIRES_PYTHON = '==3.9.12'
 
 long_description = DESCRIPTION
 
@@ -26,7 +26,7 @@ def list_reqs(fname='requirements.txt'):
 
 setup(
     name=NAME,
-    version=about['_version'],
+    version=about['__version__'],
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type='text/markdown',
