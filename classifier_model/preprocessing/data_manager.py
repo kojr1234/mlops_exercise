@@ -7,6 +7,8 @@ from typing import Any, List, Union
 import pandas as pd
 import joblib
 
+from sklearn.pipeline import Pipeline
+
 from classifier_model import __version__ as _version
 from classifier_model.config.core import DATASET_DIR, TRAINED_MODEL_DIR, config
 
@@ -29,7 +31,7 @@ def load_dataset(*, file_name: str) -> pd.DataFrame:
     Simply load the dataset
     """
 
-    df = pd.read_csv(f'{DATASET_DIR} / {file_name}')
+    df = pd.read_csv(f'{DATASET_DIR}/{file_name}')
     return df
 
 def save_pipeline(*, pipeline_to_persist: Pipeline) -> None:
