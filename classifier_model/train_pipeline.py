@@ -4,6 +4,7 @@ from classifier_model.config.core import config
 from classifier_model.pipeline import spaceship_titanic_pipeline
 from classifier_model.preprocessing.data_manager import load_dataset, save_pipeline
 
+
 def run_training() -> None:
     """
     Train the model
@@ -15,7 +16,7 @@ def run_training() -> None:
         data[config.model_config.features],
         data[config.model_config.target],
         test_size=config.model_config.test_size,
-        random_state=config.model_config.random_state
+        random_state=config.model_config.random_state,
     )
 
     # improve the code to support parameter tunning
@@ -23,5 +24,6 @@ def run_training() -> None:
 
     save_pipeline(pipeline_to_persist=spaceship_titanic_pipeline)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     run_training()

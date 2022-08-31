@@ -1,25 +1,23 @@
-from gettext import npgettext
-from typing import List, Optional, Tuple, Union
+from typing import List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
-
-from classifier_model.config.core import config
 from pydantic import BaseModel, ValidationError
+
 
 class SpaceshipTitanicDataInputSchema(BaseModel):
     PassengerId: Optional[str]
     HomePlanet: Optional[str]
-    CryoSleep: Optional[Union[bool, int, float]]
+    CryoSleep: Optional[bool]
     Cabin: Optional[str]
     Destination: Optional[str]
     Age: Optional[float]
-    VIP: Optional[Union[bool, int, float]]
+    VIP: Optional[bool]
     RoomService: Optional[float]
     FoodCourt: Optional[float]
     ShoppingMall: Optional[float]
     Spa: Optional[float]
-    VRDeck: Optional[str]
+    VRDeck: Optional[float]
     Name: Optional[str]
     # Transported: Optional[str] target variable should not be included
 
@@ -29,17 +27,18 @@ class MultipleSpaceshipTitanicDataInputs(BaseModel):
     # each element is a row of the dataset
     inputs: List[SpaceshipTitanicDataInputSchema]
 
-def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional[dict]]:
-    """ Check model inputs for unprocessable values."""
+
+def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional[str]]:
+    """Check model inputs for unprocessable values."""
 
     errors = None
 
     try:
         # replace nans so pydantic can read
         MultipleSpaceshipTitanicDataInputs(
-            inputs=input_data.replace({np.nan, None}).to_dict(orient='records')
+            inputs=input_data.replace({np.nan, None}).to_dict(orient="records")
         )
     except ValidationError as error:
-        error = error.json()
-    
+        errors = error.json()
+
     return input_data, errors
