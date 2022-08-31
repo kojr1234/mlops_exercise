@@ -33,6 +33,12 @@ def load_dataset(*, file_name: str) -> pd.DataFrame:
     return df
 
 
+def load_pipeline(*, file_name: str) -> Pipeline:
+    """Load pipeline"""
+    file_path = TRAINED_MODEL_DIR / file_name
+    return joblib.load(filename=file_path)
+
+
 def save_pipeline(*, pipeline_to_persist: Pipeline) -> None:
     """
     Save the pipeline
