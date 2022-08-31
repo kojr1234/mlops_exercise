@@ -1,4 +1,4 @@
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
@@ -8,11 +8,11 @@ from pydantic import BaseModel, ValidationError
 class SpaceshipTitanicDataInputSchema(BaseModel):
     PassengerId: Optional[str]
     HomePlanet: Optional[str]
-    CryoSleep: Optional[bool]
+    CryoSleep: Optional[Union[bool, float]]
     Cabin: Optional[str]
     Destination: Optional[str]
     Age: Optional[float]
-    VIP: Optional[bool]
+    VIP: Optional[Union[bool, float]]
     RoomService: Optional[float]
     FoodCourt: Optional[float]
     ShoppingMall: Optional[float]
