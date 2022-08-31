@@ -35,7 +35,7 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     packages=find_packages(exclude='tests'),
-    package_data={'classifier_model':['VERSION']},
+    package_data={'classifier_model':['VERSION','*.yml']},
     install_requires=list_reqs(),
     extras_require={},
     include_packages_data=True,
