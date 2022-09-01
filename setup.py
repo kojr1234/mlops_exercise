@@ -2,7 +2,7 @@ from pathlib import Path
 
 from setuptools import find_packages, setup
 
-NAME = 'spaceship_titanic_classification_model'
+NAME = 'spaceship_titanic_classif_model'
 DESCRIPTION = 'This is an toy project to learn the basics of MLOps and software design in the machine learning context'
 URL = 'https://github.com/kojr1234/mlops_exercise.git'
 EMAIL = 'fujii.kimio.k@gmail.com'
@@ -35,7 +35,12 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     packages=find_packages(exclude='tests'),
-    package_data={'classifier_model':['VERSION','*.yml']},
+    package_data={'classifier_model':[
+        'VERSION',
+        'config.yml',
+        'dataset/train.csv',
+        'dataset/test.csv'
+    ]},
     install_requires=list_reqs(),
     extras_require={},
     include_packages_data=True,
@@ -51,3 +56,5 @@ setup(
         "Programming Language :: Python :: Implementation :: PyPy",
     ]
 )
+
+

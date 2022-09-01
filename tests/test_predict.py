@@ -9,7 +9,7 @@ def test_predict_model(sample_input_data):
     dt_X, dt_y = sample_input_data
     result = make_prediction(input_data=dt_X)
 
-    test_size = 1739
+    test_size = 626
     assert result.get("predictions").shape[0] == test_size
     assert isinstance(result.get("predictions"), np.ndarray)
     assert isinstance(result.get("predictions")[0], np.int64)
