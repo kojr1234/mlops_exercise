@@ -3,6 +3,7 @@
 
 ### Datasets ###
 *.csv
+*.pkl
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
