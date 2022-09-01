@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Union
 
 import numpy as np
 import pandas as pd
@@ -9,7 +9,7 @@ from classifier_model.preprocessing.data_manager import load_pipeline
 from classifier_model.preprocessing.data_validation import validate_inputs
 
 
-def make_prediction(*, input_data: pd.DataFrame) -> dict[str, Any]:
+def make_prediction(*, input_data: Union[pd.DataFrame, dict]) -> dict[str, Any]:
 
     validated_data, errors = validate_inputs(input_data=input_data)
 
