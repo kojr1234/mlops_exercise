@@ -35,7 +35,12 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     packages=find_packages(exclude='tests'),
-    package_data={'classifier_model':['VERSION','*.yml']},
+    package_data={'classifier_model':[
+        'VERSION',
+        'config.yml',
+        'dataset/train.csv',
+        'dataset/test.csv'
+    ]},
     install_requires=list_reqs(),
     extras_require={},
     include_packages_data=True,
