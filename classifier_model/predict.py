@@ -1,4 +1,3 @@
-import logging
 from typing import Any
 
 import numpy as np
@@ -8,6 +7,7 @@ from classifier_model import __version__ as _version
 from classifier_model.config.core import config
 from classifier_model.preprocessing.data_manager import load_pipeline
 from classifier_model.preprocessing.data_validation import validate_inputs
+
 
 def make_prediction(*, input_data: pd.DataFrame) -> dict[str, Any]:
 

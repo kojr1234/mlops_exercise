@@ -52,5 +52,6 @@ def run_training() -> None:
     logger.info("Pipeline Saved")
     logger.info("Training completed!")
 
+
 if __name__ == "__main__":
     run_training()
