@@ -1,5 +1,4 @@
 from pathlib import Path
-
 from setuptools import find_packages, setup
 
 NAME = 'spaceship_titanic_classif_model'
@@ -39,7 +38,8 @@ setup(
         'VERSION',
         'config.yml',
         'dataset/train.csv',
-        'dataset/test.csv'
+        'dataset/test.csv',
+        f'models/*{about["__version__"]}.pkl'
     ]},
     install_requires=list_reqs(),
     extras_require={},
