@@ -1,6 +1,6 @@
 from feature_engine.encoding import WoEEncoder
 from feature_engine.imputation import CategoricalImputer, MeanMedianImputer
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
@@ -33,6 +33,6 @@ spaceship_titanic_pipeline = Pipeline(
             WoEEncoder(variables=config.model_config.cat_woe_encoding),
         ),
         ("StandardScaler", StandardScaler()),
-        ("LogisticRegression", LogisticRegression()),
+        ("LogisticRegression", RandomForestClassifier()),
     ]
 )
