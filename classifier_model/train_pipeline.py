@@ -2,10 +2,10 @@ import logging
 
 import pandas as pd
 from sklearn.metrics import accuracy_score
-from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 
-from classifier_model.config.core import LOGS_DIR, config
+from classifier_model.split_data import split_train_test_data
+from classifier_model.config.core import DATASET_DIR, LOGS_DIR, config
 from classifier_model.pipeline import spaceship_titanic_pipeline
 from classifier_model.preprocessing.data_manager import load_dataset, save_pipeline
 
@@ -32,21 +32,24 @@ def run_training() -> None:
     """
 
     logger.info("Running training function")
-    data = load_dataset(file_name=config.app_config.train_data)
+
+    split_train_test_data()
 
     logger.info("Dataset loaded")
-    X_, X, y_, y = train_test_split(
-        data[config.model_config.features],
-        data[config.model_config.target],
-        test_size=config.model_config.test_size,
-        random_state=config.model_config.random_state,
-    )
+    train = pd.read_csv(DATASET_DIR/config.app_config.train_data)
+    test = pd.read_csv(DATASET_DIR/config.app_config.test_data)
 
     # improve the code to support parameter tunning
-    spaceship_titanic_pipeline.fit(X_, y_)
+    spaceship_titanic_pipeline.fit(
+        train[config.model_config.features], 
+        train[config.model_config.target]
+    )
     logger.info("Model Trained")
 
-    log_performance(pipeline=spaceship_titanic_pipeline, test_X=X, test_y=y)
+    log_performance(
+        pipeline=spaceship_titanic_pipeline,
+        test_X=test[config.model_config.features],
+        test_y=test[config.model_config.target])
 
     save_pipeline(pipeline_to_persist=spaceship_titanic_pipeline)
     logger.info("Pipeline Saved")

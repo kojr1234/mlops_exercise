@@ -24,6 +24,7 @@ class AppConfig(BaseModel):
     package_name: str
     train_data: str
     test_data: str
+    full_data: str
     pipeline_save_file: str
 
 
