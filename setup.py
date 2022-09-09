@@ -37,8 +37,6 @@ setup(
     package_data={'classifier_model':[
         'VERSION',
         'config.yml',
-        'dataset/train.csv',
-        'dataset/test.csv',
         f'models/*{about["__version__"]}.pkl'
     ]},
     install_requires=list_reqs(),
