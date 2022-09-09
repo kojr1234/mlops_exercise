@@ -19,7 +19,7 @@ version: 2.1
 prepare_tox: &prepare_tox
   run:
     name: Installing tox
-    commands: |
+    command: |
       pip install --user tox
 
 executors:
