@@ -41,5 +41,5 @@ def download_data() -> None:
 
         if new_file.is_file():
             new_file.unlink()
-            
+
         os.rename(old_file, new_file)
