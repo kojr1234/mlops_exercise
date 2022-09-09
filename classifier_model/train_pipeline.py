@@ -6,6 +6,7 @@ from sklearn.pipeline import Pipeline
 from classifier_model.config.core import LOGS_DIR, config
 from classifier_model.pipeline import spaceship_titanic_pipeline
 from classifier_model.preprocessing.data_manager import load_dataset, save_pipeline
+from classifier_model.preprocessing.get_data import download_data
 from classifier_model.split_data import split_train_test_data
 
 logging.basicConfig(
@@ -18,7 +19,6 @@ logger = logging.getLogger("training_pipeline")
 def log_performance(*, pipeline: Pipeline) -> None:
 
     test = load_dataset(file_name=config.app_config.test_data)
-
     pred = pipeline.predict(test[config.model_config.features])
     acc = round(accuracy_score(test[config.model_config.target], pred), 3)
 
@@ -32,6 +32,7 @@ def run_training() -> None:
 
     logger.info("Running training function")
 
+    download_data()
     split_train_test_data()
 
     logger.info("Dataset loaded")
