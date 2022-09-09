@@ -1,5 +1,4 @@
 import pytest
-from sklearn.model_selection import train_test_split
 
 from classifier_model.config.core import config
 from classifier_model.preprocessing.data_manager import load_dataset

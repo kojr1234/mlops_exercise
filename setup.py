@@ -37,13 +37,11 @@ setup(
     package_data={'classifier_model':[
         'VERSION',
         'config.yml',
-        'dataset/train.csv',
-        'dataset/test.csv',
         f'models/*{about["__version__"]}.pkl'
     ]},
     install_requires=list_reqs(),
     extras_require={},
-    include_packages_data=True,
+    # include_packages_data=True,
     license='BSD-3',
     classifiers=[
         "License :: OSI Approved :: MIT License",
