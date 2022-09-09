@@ -1,0 +1,46 @@
+# Steps that needs to be done
+# 1) Run tox to test the model
+# 2) Build the package
+# 3) Publish on gemfury
+
+# circle works with jobs and workflows
+# jobs are instatiated by workflows
+
+# we can define macros such as 
+# defaults: &defaults
+#   docker:
+#     - image: circleci/python:3.9.5
+#   working_directory: ~/project
+
+# and use << to call it
+
+version: 2.1
+executors:
+  my_python_executor:
+    docker:
+      - image: cimg/python:3.9.12
+    working_directory: ~/project
+
+jobs:
+  test_and_deploy_classifier:
+    executor: my_python_executor
+    steps:
+      - checkout:
+          path: ~/project
+      - run:
+          name: Fetch the data
+          command: |
+            tox -e fetch_data
+      - run:
+          name: Run test on the model
+          command: |
+            tox
+      - run:
+          name: Publish the model
+          command: |
+            tox -e publish_model
+
+workflows:
+  test_and_deploy_model:
+    jobs:
+      - test_and_deploy_classifier
