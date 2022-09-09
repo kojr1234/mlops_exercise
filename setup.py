@@ -41,7 +41,7 @@ setup(
     ]},
     install_requires=list_reqs(),
     extras_require={},
-    include_packages_data=True,
+    # include_packages_data=True,
     license='BSD-3',
     classifiers=[
         "License :: OSI Approved :: MIT License",
