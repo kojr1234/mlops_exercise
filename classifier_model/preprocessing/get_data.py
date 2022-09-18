@@ -39,4 +39,7 @@ def download_data() -> None:
         old_file = DATASET_DIR / "train.csv"
         new_file = DATASET_DIR / config.app_config.full_data
 
+        if new_file.is_file():
+            new_file.unlink()
+
         os.rename(old_file, new_file)
