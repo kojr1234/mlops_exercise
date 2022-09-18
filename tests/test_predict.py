@@ -16,6 +16,7 @@ def test_predict_model(sample_input_data):
     assert not result.get("errors")
     assert accuracy_score(dt_y, result.get("predictions")) > 0.7
 
+
 def test_predict_proba_model(sample_input_data):
 
     dt_X, dt_y = sample_input_data

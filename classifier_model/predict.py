@@ -9,7 +9,9 @@ from classifier_model.preprocessing.data_manager import load_pipeline
 from classifier_model.preprocessing.data_validation import validate_inputs
 
 
-def make_prediction(*, input_data: Union[pd.DataFrame, dict], proba: bool = False) -> dict[str, Any]:
+def make_prediction(
+    *, input_data: Union[pd.DataFrame, dict], proba: bool = False
+) -> dict[str, Any]:
 
     validated_data, errors = validate_inputs(input_data=input_data)
 
@@ -22,7 +24,7 @@ def make_prediction(*, input_data: Union[pd.DataFrame, dict], proba: bool = Fals
         if proba:
             results["predictions"] = pipeline.predict_proba(
                 validated_data[config.model_config.features]
-            )[:,1]
+            )[:, 1]
         else:
             results["predictions"] = pipeline.predict(
                 validated_data[config.model_config.features]
