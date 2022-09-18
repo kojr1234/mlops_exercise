@@ -57,4 +57,7 @@ workflows:
   test_and_deploy_model:
     jobs:
       - test_and_deploy_classifier:
-        <<: *tags_only
+          filters:
+              branches:
+                only:
+                  - main
