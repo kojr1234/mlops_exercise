@@ -63,7 +63,7 @@ jobs:
 workflows:
   test_and_deploy_model:
     jobs:
-      - test_classifier:
+      - test_classifier
       - publish-model:
           filters:
               branches:
