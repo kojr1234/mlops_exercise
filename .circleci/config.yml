@@ -65,8 +65,6 @@ workflows:
     jobs:
       - test_classifier
       - publish-model:
-          requires:
-          - test_classifier
           filters:
               branches:
                 only:
