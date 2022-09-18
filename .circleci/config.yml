@@ -35,7 +35,7 @@ tags_only: &tags_only
       only: /^.*/
 
 jobs:
-  test_and_deploy_classifier:
+  test_classifier:
     executor: my_python_executor
     steps:
       - checkout:
@@ -49,6 +49,13 @@ jobs:
           name: Run test on the model
           command: |
             tox
+
+  publish-model:
+    executor: my_python_executor
+    steps:  
+      - checkout:
+          path: ~/project
+      - *prepare_tox
       - run:
           name: Publish the model
           command: |
@@ -56,7 +63,10 @@ jobs:
 workflows:
   test_and_deploy_model:
     jobs:
-      - test_and_deploy_classifier:
+      - test_classifier:
+      - publish-model:
+          requires:
+          - test_classifier
           filters:
               branches:
                 only:
