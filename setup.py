@@ -6,7 +6,7 @@ DESCRIPTION = 'This is an toy project to learn the basics of MLOps and software 
 URL = 'https://github.com/kojr1234/mlops_exercise.git'
 EMAIL = 'fujii.kimio.k@gmail.com'
 AUTHOR= 'FabioFujii'
-REQUIRES_PYTHON = '==3.9.12'
+REQUIRES_PYTHON = '>=3.7'
 
 long_description = DESCRIPTION
 
